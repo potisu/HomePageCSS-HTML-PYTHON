@@ -28,21 +28,50 @@ custom_html = """
             25%, 75% { background-position: -100px 0px; }
         }
 
+        .seperator-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .seperator {
+            width: 3000px;
+            height: 5px;
+            background: rgb(48, 255, 144);
+            background: -moz-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(48, 255, 144, 1)), color-stop(25%, rgba(237, 45, 237, 1)), color-stop(50%, rgba(201, 152, 38, 1)), color-stop(75%, rgba(48, 255, 230, 1)), color-stop(100%, rgba(48, 255, 144, 1)));
+            background: -webkit-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
+            background: -o-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
+            background: -ms-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
+            background: linear-gradient(to right, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30ff90', endColorstr='#30ff90', GradientType=1);
+            animation: moveGradient 3s infinite linear;
+        }
+
+        @keyframes moveGradient {
+            from {
+                transform: translateX(-100%);
+            }
+            to {
+                transform: translateX(100%);
+            }
+        }
+
         .centerBox {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 600px;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
         }
 
         .categoryWrapper {
-            height: 310px;
-            width: 460px;
+            height: 150px;
+            width: 200px;
             background: url("http://ohlookawebsite.com/bathroomtestfull.jpg") no-repeat center center;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
+            margin: 10px;
         }
 
         .categoryWrapper:after {
@@ -63,7 +92,7 @@ custom_html = """
 
         .categoryWrapper h1 {
             color:white;
-            font-size: 50px;
+            font-size: 20px;
             letter-spacing: 2px;
             transition: all 0.15s ease 0s; 
             position: relative;
@@ -71,19 +100,20 @@ custom_html = """
         }
 
         .categoryWrapper:hover h1 {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .categoryWrapper button {
             position: absolute;
-            transform: translateY(60px);
+            transform: translateY(30px);
+            appearance: none;
             -webkit-appearance: none;
             border: none;
             background: none;
             color:white;
-            width: 250px;
-            height:50px;
-            font-size: 20px;
+            width: 120px;
+            height:30px;
+            font-size: 12px;
             padding: 0;
             margin: 0;
             outline: none;
@@ -93,8 +123,8 @@ custom_html = """
         .categoryWrapper button span {
             display: block;
             position: relative;
-            line-height: 50px;
-            height: 50px;
+            line-height: 30px;
+            height: 30px;
             cursor: pointer;
         }
 
@@ -103,7 +133,7 @@ custom_html = """
             position: absolute;
             top:0;
             left: 50%;
-            width: 20px;
+            width: 10px;
             height: 0;
 
             border: 1px solid white;
@@ -124,7 +154,7 @@ custom_html = """
             position: absolute;
             top:0;
             right: 50%;
-            width: 20px;
+            width: 10px;
             height: 0;
 
             border: 1px solid white;
@@ -202,14 +232,17 @@ custom_html = """
             transition: width 0.2s;
         }
 
-        .categoryWrapper button:hover > span > span > span:after {
+        .categoryWrapper:hover button > span > span > span:after {
             width: 100%;
         }
     </style>
 </head>
 <body>
+    <div class="seperator-wrapper">
+        <div class="seperator gradient"></div>
+    </div>
     <div class="centerBox">
-        <div class="categoryWrapper">
+        <div class="categoryWrapper" style="position: absolute; top: 10px; left: 10px;">
             <h1>My Store</h1>
             <button onclick="window.location.href='/products';">
                 <span>
@@ -235,4 +268,3 @@ handler = http.server.SimpleHTTPRequestHandler
 with socketserver.TCPServer(("", port), handler) as httpd:
     print(f"Servindo na porta {port}")
     httpd.serve_forever()
-
