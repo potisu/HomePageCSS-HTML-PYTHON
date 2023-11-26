@@ -16,17 +16,26 @@ custom_html = """
             height: 1vh;
             margin: 0;
             padding: 0;
-            background: url('imagens/soma.jpg') no-repeat center center fixed;
-            background-size: 119%;
+            background: url('imagens/soma12.jpg') no-repeat center center fixed;
+            background-size: 109%;
             font-family: 'Roboto Mono', monospace;
             overflow: hidden;
             animation: slidein 20s infinite alternate;
         }
 
         @keyframes slidein {
-            0%, 50% { background-position: top; }
-            25%, 75% { background-position: -100px 0px; }
+            0%, 30% { background-position: top; }
+            25%, 40% { background-position: -100px 0px; }
         }
+        .cornerBlock h1 {
+            color: white;
+            font-size: 20px;
+            letter-spacing: 2px;
+            transition: all 0.15s ease 0s;
+            position: relative;
+            z-index: 15;
+            text-shadow: 2px 2px 5px rgb(255, 140, 255);
+}
 
         .seperator-wrapper {
             width: 100%;
@@ -35,7 +44,7 @@ custom_html = """
 
         .seperator {
             width: 3000px;
-            height: 5px;
+            height: 4px;
             background: rgb(48, 255, 144);
             background: -moz-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
             background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(48, 255, 144, 1)), color-stop(25%, rgba(237, 45, 237, 1)), color-stop(50%, rgba(201, 152, 38, 1)), color-stop(75%, rgba(48, 255, 230, 1)), color-stop(100%, rgba(48, 255, 144, 1)));
@@ -44,7 +53,7 @@ custom_html = """
             background: -ms-linear-gradient(left, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
             background: linear-gradient(to right, rgba(48, 255, 144, 1) 0%, rgba(237, 45, 237, 1) 25%, rgba(201, 152, 38, 1) 50%, rgba(48, 255, 230, 1) 75%, rgba(48, 255, 144, 1) 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#30ff90', endColorstr='#30ff90', GradientType=1);
-            animation: moveGradient 3s infinite linear;
+            animation: moveGradient 4s infinite linear;
         }
 
         @keyframes moveGradient {
@@ -58,14 +67,39 @@ custom_html = """
 
         .centerBox {
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .cornerBlock {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 200px;
+            height: 120px;
+            background: url("http://ohlookawebsite.com/bathroomtestfull.jpg") no-repeat center center;
+            background-size: cover;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .cornerBlock h1 {
+            color:white;
+            font-size: 20px;
+            letter-spacing: 2px;
+            transition: all 0.15s ease 0s; 
+            position: relative;
+            z-index: 15;
         }
 
         .categoryWrapper {
-            height: 150px;
-            width: 200px;
+            height: 200px;
+            width: 250px;
             background: url("http://ohlookawebsite.com/bathroomtestfull.jpg") no-repeat center center;
             display: flex;
             justify-content: center;
@@ -105,7 +139,7 @@ custom_html = """
 
         .categoryWrapper button {
             position: absolute;
-            transform: translateY(30px);
+            transform: translateY(120px);
             appearance: none;
             -webkit-appearance: none;
             border: none;
@@ -242,8 +276,11 @@ custom_html = """
         <div class="seperator gradient"></div>
     </div>
     <div class="centerBox">
-        <div class="categoryWrapper" style="position: absolute; top: 10px; left: 10px;">
-            <h1>My Store</h1>
+        <div class="cornerBlock">
+            <h1>STORE</h1>
+        </div>
+        <div class="categoryWrapper" style="margin-right: 10px; margin-left: 10px;">
+            <div class="categoryImage" style="background: url('imagens/image1.jpg') no-repeat center center; background-size: cover; position: absolute; width: 100%; height: 100%;"></div>
             <button onclick="window.location.href='/products';">
                 <span>
                     <span>
@@ -254,6 +291,71 @@ custom_html = """
                 </span>
             </button>
         </div>
+        <div class="categoryWrapper" style="margin-right: 10px;">
+            <div class="categoryImage" style="background: url('imagens/image2.jpg') no-repeat center center; background-size: cover; position: absolute; width: 100%; height: 100%;"></div>
+            <button onclick="window.location.href='/products';">
+                <span>
+                    <span>
+                        <span data-attr-span="Products">
+                            Products
+                        </span>
+                    </span>
+                </span>
+            </button>
+        </div>
+        <div class="categoryWrapper">
+            <div class="categoryImage" style="background: url('imagens/image3.jpg') no-repeat center center; background-size: cover; position: absolute; width: 100%; height: 100%;"></div>
+            <button onclick="window.location.href='/products';">
+                <span>
+                    <span>
+                        <span data-attr-span="Products">
+                            Products
+                        </span>
+                    </span>
+                </span>
+            </button>
+        </div>
+    </div>
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>potsuDEV</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
+    <style>
+        
+        .bottomRightBlock {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 150px;
+            height: 80px;
+            background: rgba(255, 190, 255, 0.5); 
+            border-radius: 5px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+        }
+
+        .bottomRightBlock img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 4px; 
+        }
+
+        .bottomRightBlock p {
+            margin: 0;
+            font-size: 14px;
+            color: #333; 
+        }
+    </style>
+</head>
+<body>
+    <div class="bottomRightBlock">
+        <img src="imagens/potsuDEV.jpg" alt="Image">
+        <p>potsu DEV</p>
     </div>
 </body>
 </html>
